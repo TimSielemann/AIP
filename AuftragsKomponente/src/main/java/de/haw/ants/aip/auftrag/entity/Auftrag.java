@@ -17,7 +17,7 @@ public class Auftrag {
 	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = false)
 	private Long fertigungsauftrag;
 
 	@Column(nullable = false)
@@ -124,5 +124,15 @@ public class Auftrag {
 	public boolean equals(Object other) {
 		if(!(other instanceof Auftrag)) return false;
 		return ((Auftrag)other).id == id;
+	}
+
+
+	public Long getBauteilnr() {
+		return bauteilnr;
+	}
+
+
+	public void setBauteilnr(Long bauteilnr) {
+		this.bauteilnr = bauteilnr;
 	}
 }

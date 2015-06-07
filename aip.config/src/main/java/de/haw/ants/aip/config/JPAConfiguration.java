@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaRepositories(JPAConfiguration.REPO)
 @EnableTransactionManagement // similiar to <tx:annotation-driven/>
-@ComponentScan(basePackages = "de.haw.ants.aip.auftrag.entitys")
+@ComponentScan(basePackages = "de.haw.ants.aip")
 public class JPAConfiguration {
 	public static final String REPO = "de.haw.ants.aip";
 	

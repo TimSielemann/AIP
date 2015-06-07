@@ -1,8 +1,11 @@
 package de.haw.ants.aip.auftrag.komponententest;
 
+import java.sql.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,10 +19,53 @@ import de.haw.ants.aip.auftrag.facade.interfaces.IAuftragService;
 @ContextConfiguration(classes=de.haw.ants.aip.auftrag.komponententest.AuftragKomponententest.ContextConfiguration.class)
 public class AuftragKomponententest {
 
-	@ComponentScan(basePackages = "de.haw.ants.aip")
-	@Configuration
-    static class ContextConfiguration {}
+	    @Configuration
+		@ComponentScan(basePackages = "de.haw.ants.aip")
+		// Note: there is no @PropertySource("classpath:application.properties") as this is taken from DatabaseConfig.class
+	    static class ContextConfiguration {
 
+//			@Autowired
+//			private IFertigungsservice fertigung;
+//			
+//			@Bean(name="FertigungskomponenteFacade")
+//			public IFertigungsservice FertigungskomponenteFacade() {
+//				return new IFertigungsservice(){
+//
+//					@Override
+//					public Fertigungsauftrag erstelleFertigungsauftrag(
+//							long bauteilId, Date endtermin) {
+//						Fertigungsauftrag fAuftrag = new Fertigungsauftrag();
+//						fAuftrag.setId(1L);
+//						return fAuftrag;
+//					}
+//
+//					@Override
+//					public boolean loescheFertigungsauftrag(
+//							long fertigungsAuftragId) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//
+//					@Override
+//					public boolean speichereFertigungsauftrag(
+//							Fertigungsauftrag fertigungsAuftrag) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//
+//					@Override
+//					public Fertigungsauftrag holeFertigungsauftrag(
+//							long fertigungsAuftragId) {
+//						Fertigungsauftrag fAuftrag = new Fertigungsauftrag();
+//						fAuftrag.setId(1L);
+//						return fAuftrag;
+//					}
+//					
+//				};
+//			}
+		}
+	
+	
 	@Autowired
 	private IAuftragService auftragService;
 	

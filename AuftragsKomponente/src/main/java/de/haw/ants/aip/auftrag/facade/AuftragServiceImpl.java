@@ -1,5 +1,7 @@
 package de.haw.ants.aip.auftrag.facade;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -19,6 +21,7 @@ public class AuftragServiceImpl implements IAuftragService {
 		Assert.isNull(auftrag.getId());
 		Assert.notNull(auftrag.getKunde());
 		Assert.notNull(auftrag.getPreis());
+		System.out.println("erstellen...");
 		return this.businessLogic.erstelleAuftrag(auftrag);
 	}
 
@@ -32,6 +35,11 @@ public class AuftragServiceImpl implements IAuftragService {
 	public Auftrag auftragBezahlen(Long auftragsnr) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Auftrag> getAuftragForKunde(long kundennr) {
+		return businessLogic.getAuftragForKunde(kundennr);
 	}
 
 }

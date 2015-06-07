@@ -1,16 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>AuftragKomponente</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<parent>
-		<groupId>com.mondula.training</groupId>
-		<artifactId>spring.config</artifactId>
-		<version>1.0</version>
-		<relativePath>../aip.config/pom.xml</relativePath>
-	</parent>
-
-	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.mondula.training</groupId>
+    <artifactId>spring.config</artifactId>
+    <version>1.0</version>
+  </parent>
+  <groupId>com.mondula.training</groupId>
+  <artifactId>aip.config</artifactId>
+  <version>1.0</version>
+  <name>aip.config</name>
+  <description>aip.config</description>
+  <dependencies>
 		<!-- SPRING CORE -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -24,7 +24,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 		</dependency>
-		
 		<!-- SPRING DATA -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -38,7 +37,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
-		
 		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -63,22 +61,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<!-- TEST SETUP -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mondula.training</groupId>
-			<artifactId>aip.config</artifactId>
-			<version>1.0</version>
 		</dependency>
 	</dependencies>
 </project>
