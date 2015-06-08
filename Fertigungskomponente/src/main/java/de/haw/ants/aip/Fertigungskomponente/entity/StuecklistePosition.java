@@ -1,17 +1,18 @@
 package de.haw.ants.aip.Fertigungskomponente.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+@Entity
 public class StuecklistePosition {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@ManyToOne
-	private Stueckliste stueckliste;
-	@ManyToOne
+	@OneToOne
 	private Bauteil bauteil;
 	@Column(nullable = false)
 	private Long position;
@@ -19,10 +20,10 @@ public class StuecklistePosition {
 	public StuecklistePosition() {
 	}
 
-	public StuecklistePosition(Stueckliste stueckliste, Bauteil bauteil,
+	public StuecklistePosition(Bauteil bauteil,
 			Long position) {
 		super();
-		this.stueckliste = stueckliste;
+	
 		this.bauteil = bauteil;
 		this.position = position;
 	}
@@ -33,14 +34,6 @@ public class StuecklistePosition {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Stueckliste getStueckliste() {
-		return stueckliste;
-	}
-
-	public void setStueckliste(Stueckliste stueckliste) {
-		this.stueckliste = stueckliste;
 	}
 
 	public Bauteil getBauteil() {

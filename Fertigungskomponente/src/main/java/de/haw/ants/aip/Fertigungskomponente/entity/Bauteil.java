@@ -1,11 +1,12 @@
 package de.haw.ants.aip.Fertigungskomponente.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+@Entity
 public class Bauteil {
 
 	@Id
@@ -13,46 +14,25 @@ public class Bauteil {
 	private Long id;
 	@Column
 	private String name;
-	@ManyToOne
-	private Fertigungsauftrag fertigungsauftraege;
 	@Column
 	private String modellnummer;
 	@Column
 	private String seriennummer;
 	@Column
 	private long anzahl;
-	@OneToMany
-	private StuecklistePosition stuecklistePos;
-
+	
 	public Bauteil() {
 	}
 
 	public Bauteil(String name, Fertigungsauftrag fertigungsauftraege,
-			String modellnummer, String seriennummer, long anzahl,
-			StuecklistePosition stuecklistePos) {
+			String modellnummer, String seriennummer, long anzahl
+			) {
 		super();
 		this.name = name;
-		this.fertigungsauftraege = fertigungsauftraege;
 		this.modellnummer = modellnummer;
 		this.seriennummer = seriennummer;
 		this.anzahl = anzahl;
-		this.stuecklistePos = stuecklistePos;
-	}
-
-	public StuecklistePosition getStuecklistePos() {
-		return stuecklistePos;
-	}
-
-	public void setStuecklistePos(StuecklistePosition stuecklistePos) {
-		this.stuecklistePos = stuecklistePos;
-	}
-
-	public Fertigungsauftrag getFertigungsauftraege() {
-		return fertigungsauftraege;
-	}
-
-	public void setFertigungsauftraege(Fertigungsauftrag fertigungsauftraege) {
-		this.fertigungsauftraege = fertigungsauftraege;
+		
 	}
 
 	public Long getId() {

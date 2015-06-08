@@ -1,13 +1,16 @@
 package de.haw.ants.aip.Fertigungskomponente.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
+@Entity
 public class Arbeitsplan {
 	@Id
 	@GeneratedValue
@@ -18,14 +21,14 @@ public class Arbeitsplan {
 	private Date startzeit;
 	@Column
 	private Date endzeit;
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Vorgang vorgaenge;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Vorgang> vorgaenge;
 
 	public Arbeitsplan() {
 	}
 
 	public Arbeitsplan(String name, Date startzeit, Date endzeit,
-			Vorgang vorgaenge) {
+			List<Vorgang> vorgaenge) {
 		super();
 		this.name = name;
 		this.startzeit = startzeit;
@@ -65,11 +68,11 @@ public class Arbeitsplan {
 		this.endzeit = endzeit;
 	}
 
-	public Vorgang getVorgaenge() {
+	public List<Vorgang> getVorgaenge() {
 		return vorgaenge;
 	}
 
-	public void setVorgaenge(Vorgang vorgaenge) {
+	public void setVorgaenge(List<Vorgang> vorgaenge) {
 		this.vorgaenge = vorgaenge;
 	}
 
