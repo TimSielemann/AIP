@@ -3,12 +3,13 @@ package de.haw.ants.aip.Fertigungskomponente.businesslogic;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import de.haw.ants.aip.Fertigungskomponente.entity.Bauteil;
 import de.haw.ants.aip.Fertigungskomponente.entity.Fertigungsauftrag;
 import de.haw.ants.aip.Fertigungskomponente.repository.BauteilRepository;
 import de.haw.ants.aip.Fertigungskomponente.repository.FertigungsauftragRepository;
-
+@Component
 public class FertigungBusinessLogic {
 
 	@Autowired

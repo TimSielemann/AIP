@@ -86,6 +86,11 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.mondula.training</groupId>
+			<artifactId>aip.config</artifactId>
+			<version>1.0</version>
+		</dependency>
+  </dependencies>
   
 </project>

@@ -1,6 +1,7 @@
 package de.haw.ants.aip.Fertigungskomponente;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,56 +25,61 @@ public class FertigungskomponenteTest {
 	@Configuration
 	@ComponentScan(basePackages = "de.haw.ants.aip")
 	static class ContextConfiguration {
-		@Autowired
-		private IFertigungsservice fertService;
+	}
 
-		@Test
-		public void erstelleFertAuftragTest() {
-			Bauteil b = new Bauteil();
-			b.setAnzahl(1);
-			;
-			b.setModellnummer("A123456");
-			b.setName("Schraube");
-			StuecklistePosition pos = new StuecklistePosition();
-			pos.setBauteil(b);
-			pos.setPosition(1l);
-			Stueckliste stueckliste = new Stueckliste();
-			stueckliste.setBauteil(b);
-			stueckliste.setPos(pos);
-			pos.setStueckliste(stueckliste);
-			b.setStuecklistePos(pos);
-			fertService.speichereBauteil(b);
-			long week = 7 * 24 * 60 * 60 * 1000l;
-			Date endtermin = new Date(System.currentTimeMillis() + week);
-			Fertigungsauftrag auftrag = fertService.erstelleFertigungsauftrag(
-					b.getId(), endtermin);
-			Assert.notNull(auftrag);
-			Assert.notNull(auftrag.getId());
-		}
-		@Test
-		public void speichereFertAuftragTest() {
-			Bauteil b = new Bauteil();
-			b.setAnzahl(1);
-			;
-			b.setModellnummer("A123456");
-			b.setName("Schraube");
-			StuecklistePosition pos = new StuecklistePosition();
-			pos.setBauteil(b);
-			pos.setPosition(1l);
-			Stueckliste stueckliste = new Stueckliste();
-			stueckliste.setBauteil(b);
-			stueckliste.setPos(pos);
-			pos.setStueckliste(stueckliste);
-			b.setStuecklistePos(pos);
-			fertService.speichereBauteil(b);
-			long week = 7 * 24 * 60 * 60 * 1000l;
-			Date endtermin = new Date(System.currentTimeMillis() + week);
-			Fertigungsauftrag auftrag = fertService.erstelleFertigungsauftrag(
-					b.getId(), endtermin);
-			auftrag.setEndtermin(new Date(System.currentTimeMillis()));
-			Fertigungsauftrag neuerAuftrag=auftrag;
-			fertService.speichereFertigungsauftrag(neuerAuftrag);
-			Assert.isTrue(fertService.holeFertigungsauftrag(auftrag.getId()).getEndtermin()!=neuerAuftrag.getEndtermin());
+	@Autowired
+	private IFertigungsservice fertService;
+
+	@Test
+	public void erstelleFertAuftragTest() {
+		Bauteil b = new Bauteil();
+		b.setAnzahl(1);
+
+		b.setModellnummer("A123456");
+		b.setName("Schraube");
+		StuecklistePosition pos = new StuecklistePosition();
+		pos.setBauteil(b);
+		pos.setPosition(1l);
+		ArrayList<StuecklistePosition> list = new ArrayList();
+		Stueckliste stueckliste = new Stueckliste();
+		list.add(pos);
+		stueckliste.setBauteil(b);
+		stueckliste.setPos(list);
+		
+		fertService.speichereBauteil(b);
+		long week = 7 * 24 * 60 * 60 * 1000l;
+		Date endtermin = new Date(System.currentTimeMillis() + week);
+		Fertigungsauftrag auftrag = fertService.erstelleFertigungsauftrag(
+				b.getId(), endtermin);
+		Assert.notNull(auftrag);
+		Assert.notNull(auftrag.getId());
 	}
+
+	@Test
+	public void speichereFertAuftragTest() {
+		Bauteil b = new Bauteil();
+		b.setAnzahl(1);
+		;
+		b.setModellnummer("A123456");
+		b.setName("Schraube");
+		StuecklistePosition pos = new StuecklistePosition();
+		pos.setBauteil(b);
+		pos.setPosition(1l);
+		ArrayList<StuecklistePosition> liste = new ArrayList<StuecklistePosition>();
+		Stueckliste stueckliste = new Stueckliste();
+		stueckliste.setBauteil(b);
+		liste.add(pos);
+		stueckliste.setPos(liste);
+		fertService.speichereBauteil(b);
+		long week = 7 * 24 * 60 * 60 * 1000l;
+		Date endtermin = new Date(System.currentTimeMillis() + week);
+		Fertigungsauftrag auftrag = fertService.erstelleFertigungsauftrag(
+				b.getId(), endtermin);
+		auftrag.setEndtermin(new Date(System.currentTimeMillis()));
+		Fertigungsauftrag neuerAuftrag = auftrag;
+		fertService.speichereFertigungsauftrag(neuerAuftrag);
+		Assert.isTrue(fertService.holeFertigungsauftrag(auftrag.getId())
+				.getEndtermin() != neuerAuftrag.getEndtermin());
 	}
+
 }
