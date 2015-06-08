@@ -19,17 +19,15 @@ import de.haw.ants.aip.auftrag.facade.interfaces.IAuftragService;
 @ContextConfiguration(classes=de.haw.ants.aip.auftrag.komponententest.AuftragKomponententest.ContextConfiguration.class)
 public class AuftragKomponententest {
 
-	    @Configuration
+	    //@Configuration
 		@ComponentScan(basePackages = "de.haw.ants.aip")
 		// Note: there is no @PropertySource("classpath:application.properties") as this is taken from DatabaseConfig.class
 	    static class ContextConfiguration {
-
-//			@Autowired
-//			private IFertigungsservice fertigung;
+//
 //			
-//			@Bean(name="FertigungskomponenteFacade")
-//			public IFertigungsservice FertigungskomponenteFacade() {
-//				return new IFertigungsservice(){
+//			@Bean(name="Fertigungsservice")
+//			public de.haw.ants.aip.Fertigungskomponente.facade.IFertigungsservice Fertigungsservice() {
+//				return new de.haw.ants.aip.Fertigungskomponente.facade.IFertigungsservice(){
 //
 //					@Override
 //					public Fertigungsauftrag erstelleFertigungsauftrag(
@@ -60,6 +58,12 @@ public class AuftragKomponententest {
 //						fAuftrag.setId(1L);
 //						return fAuftrag;
 //					}
+//
+//					@Override
+//					public boolean speichereBauteil(Bauteil b) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
 //					
 //				};
 //			}
@@ -69,10 +73,12 @@ public class AuftragKomponententest {
 	@Autowired
 	private IAuftragService auftragService;
 	
-    
+	@Autowired
+//    private IFertigungsservice Fertigungsservice;
 
     @Test
     public void createAuftrag() {
+//    	System.out.println(Fertigungsservice.erstelleFertigungsauftrag(1, new Date(0)));
     	Auftrag auftrag = new Auftrag(1L, 374.23, 1L);
     	auftrag = this.auftragService.erstelleAuftrag(auftrag);
     	Assert.notNull(auftrag.getId());    	
