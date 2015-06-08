@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import de.haw.ants.aip.Fertigungskomponente.entity.Fertigungsauftrag;
+import de.haw.ants.aip.Fertigungskomponente.facade.IFertigungsservice;
 import de.haw.ants.aip.auftrag.entity.Auftrag;
 import de.haw.ants.aip.auftrag.repositories.AuftragsRepository;
 
@@ -17,13 +19,13 @@ public class AuftragBusinessLogic {
 	private AuftragsRepository repo;
 	
 	@Autowired
-	//private IFertigungsservice fertigungskomp; 
+	private IFertigungsservice fertigungskomp; 
 	
 	private static final long TWOWEEKS = 1000*60*60*24*14;
 	
 	public Auftrag erstelleAuftrag(Auftrag auftrag) {
-		//TODO Fertigungsauftrag erstellen
-	    auftrag.setFertigungsauftrag(1L);
+		Fertigungsauftrag fauftrag = fertigungskomp.erstelleFertigungsauftrag(auftrag.getBauteilnr(), new Date(System.currentTimeMillis()+TWOWEEKS));
+	    auftrag.setFertigungsauftrag(fauftrag.getId());
 		repo.save(auftrag);
 		return auftrag;
 	}

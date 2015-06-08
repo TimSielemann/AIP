@@ -8,6 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -26,10 +30,13 @@ import org.springframework.web.servlet.HandlerMapping;
 
 
 @RestController
+@EnableAutoConfiguration
+@ConfigurationProperties(prefix="application1") // the port property is prefixed by the application name
+@PropertySource("classpath:application-nodump.properties") // different properties for different spring contexts.
 public class DispatcherController {
 	
-	private static final String URL1 = "http://localhost:47583";
-	private static final String URL2 = "http://localhost:23847";
+	private String URL1 = "http://localhost:47583";
+	private String URL2 = "http://localhost:23847";
 
 	private int lastRequest = 1;
 	private RestTemplate restTemplate = new RestTemplate();

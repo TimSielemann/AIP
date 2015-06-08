@@ -57,5 +57,10 @@
 			<artifactId>aip.config</artifactId>
 			<version>1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.mondula.training</groupId>
+			<artifactId>Fertigungskomponente</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 </project>
