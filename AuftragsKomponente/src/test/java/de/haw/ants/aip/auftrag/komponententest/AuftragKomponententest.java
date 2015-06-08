@@ -12,6 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import de.haw.ants.aip.Fertigungskomponente.entity.Bauteil;
+import de.haw.ants.aip.Fertigungskomponente.entity.Fertigungsauftrag;
+import de.haw.ants.aip.Fertigungskomponente.facade.IFertigungsservice;
 import de.haw.ants.aip.auftrag.entity.Auftrag;
 import de.haw.ants.aip.auftrag.facade.interfaces.IAuftragService;
 
@@ -73,12 +76,9 @@ public class AuftragKomponententest {
 	@Autowired
 	private IAuftragService auftragService;
 	
-	@Autowired
-//    private IFertigungsservice Fertigungsservice;
 
     @Test
     public void createAuftrag() {
-//    	System.out.println(Fertigungsservice.erstelleFertigungsauftrag(1, new Date(0)));
     	Auftrag auftrag = new Auftrag(1L, 374.23, 1L);
     	auftrag = this.auftragService.erstelleAuftrag(auftrag);
     	Assert.notNull(auftrag.getId());    	

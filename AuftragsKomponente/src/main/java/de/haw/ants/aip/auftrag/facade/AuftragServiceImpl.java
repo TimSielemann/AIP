@@ -21,7 +21,6 @@ public class AuftragServiceImpl implements IAuftragService {
 		Assert.isNull(auftrag.getId());
 		Assert.notNull(auftrag.getKunde());
 		Assert.notNull(auftrag.getPreis());
-		System.out.println("erstellen...");
 		return this.businessLogic.erstelleAuftrag(auftrag);
 	}
 
