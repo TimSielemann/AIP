@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import de.haw.ants.aip.Fertigungskomponente.entity.Bauteil;
 import de.haw.ants.aip.Fertigungskomponente.entity.Fertigungsauftrag;
 import de.haw.ants.aip.Fertigungskomponente.repository.BauteilRepository;
 import de.haw.ants.aip.Fertigungskomponente.repository.FertigungsauftragRepository;
@@ -83,5 +84,19 @@ public class FertigungBusinessLogic {
 			flag = false;
 		}
 		return flag;
+	}
+
+	public boolean speichereBautel(Bauteil b) {
+		boolean flag = true;
+		try {
+			btRepo.save(b);
+		}catch(Exception e){ 
+			e.printStackTrace();
+			System.out.println("#############");
+			System.out.println("Das Bauteil konnte nicht gespeichert werden");
+			System.out.println("#############");
+			flag=false;
+		}
+	return flag;
 	}
 }
