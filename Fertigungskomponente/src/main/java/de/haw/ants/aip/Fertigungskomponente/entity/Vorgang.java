@@ -1,9 +1,11 @@
 package de.haw.ants.aip.Fertigungskomponente.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+@Entity
 public class Vorgang {
 
 	@Id
@@ -11,18 +13,16 @@ public class Vorgang {
 	private Long id;
 	@Column(nullable = false, unique = true)
 	private String bezeichnnung;
-	@Column
-	Arbeitsplan arbeitsplan;
+
 
 
 	public Vorgang() {
 	}
 
-	public Vorgang(String bezeichnnung, Arbeitsplan arbeitsplan) {
+	public Vorgang(String bezeichnnung) {
 		super();
 		this.bezeichnnung = bezeichnnung;
-		this.arbeitsplan = arbeitsplan;
-	}
+		}
 
 	
 	public Long getId() {
@@ -41,15 +41,7 @@ public class Vorgang {
 		this.bezeichnnung = bezeichnnung;
 	}
 
-	public Arbeitsplan getArbeitsplan() {
-		return arbeitsplan;
-	}
-
-	public void setArbeitsplan(Arbeitsplan arbeitsplan) {
-		this.arbeitsplan = arbeitsplan;
-	}
-
-	public boolean equals(Object other) {
+		public boolean equals(Object other) {
 		if (!(other instanceof Vorgang))
 			return false;
 		if (id == null)

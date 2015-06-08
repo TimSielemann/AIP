@@ -1,5 +1,14 @@
 package de.haw.ants.aip.Fertigungskomponente;
 
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import de.haw.ants.aip.Fertigungskomponente.entity.Bauteil;
+import de.haw.ants.aip.Fertigungskomponente.entity.Fertigungsauftrag;
+import de.haw.ants.aip.Fertigungskomponente.entity.Stueckliste;
+import de.haw.ants.aip.Fertigungskomponente.entity.StuecklistePosition;
+import de.haw.ants.aip.Fertigungskomponente.facade.IFertigungsservice;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,7 +19,9 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
-    /**
+    @Autowired
+	private IFertigungsservice fertService;
+	/**
      * Create the test case
      *
      * @param testName name of the test case
@@ -33,6 +44,6 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+    	assertTrue( true );
     }
 }
