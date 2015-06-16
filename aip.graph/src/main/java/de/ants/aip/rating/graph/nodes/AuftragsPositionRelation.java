@@ -8,7 +8,7 @@ import org.springframework.data.neo4j.annotation.StartNode;
 @RelationshipEntity(type=AuftragsPositionRelation.RELATIONSHIP_TYPE)
 public class AuftragsPositionRelation {
 
-	public static final String RELATIONSHIP_TYPE = "HAT_BESTELLT";
+	public static final String RELATIONSHIP_TYPE = "KAUFTEN";
 
 	@GraphId 
 	private Long id;

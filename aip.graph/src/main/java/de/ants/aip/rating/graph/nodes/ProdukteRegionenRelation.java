@@ -21,7 +21,7 @@ public class ProdukteRegionenRelation {
 		this.produkt = produkt;
 	}
 
-	public RegionNode getRegionn() {
+	public RegionNode getRegion() {
 		return region;
 	}
 

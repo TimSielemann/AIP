@@ -26,6 +26,9 @@ public class RatingServiceImpl implements RatingService {
     @Autowired
 	private AuftragsPositionGraphRepository auftragsPositionGraphRepository;
 	
+    @Autowired 
+    private ProdukteRegionenGraphRepository prodRegionGraphRepo;
+    
     @Autowired
     private Neo4jTemplate template;
 
