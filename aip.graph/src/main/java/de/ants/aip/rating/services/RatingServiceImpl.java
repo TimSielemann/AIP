@@ -9,9 +9,12 @@ import de.ants.aip.rating.dto.SalesData;
 import de.ants.aip.rating.graph.nodes.AuftragsPositionRelation;
 import de.ants.aip.rating.graph.nodes.KundeNode;
 import de.ants.aip.rating.graph.nodes.ProduktNode;
+import de.ants.aip.rating.graph.nodes.RegionNode;
 import de.ants.aip.rating.graph.repository.AuftragsPositionGraphRepository;
 import de.ants.aip.rating.graph.repository.KundeGraphRepository;
 import de.ants.aip.rating.graph.repository.ProduktGraphRepository;
+import de.ants.aip.rating.graph.repository.ProdukteRegionenGraphRepostiory;
+import de.ants.aip.rating.graph.repository.RegionGraphRepository;
 
 @Service
 @Transactional
@@ -27,8 +30,9 @@ public class RatingServiceImpl implements RatingService {
 	private AuftragsPositionGraphRepository auftragsPositionGraphRepository;
 	
     @Autowired 
-    private ProdukteRegionenGraphRepository prodRegionGraphRepo;
-    
+    private ProdukteRegionenGraphRepostiory prodRegionGraphRepo;
+    @Autowired
+    private RegionGraphRepository regionGraphRepo;
     @Autowired
     private Neo4jTemplate template;
 
@@ -60,6 +64,14 @@ public class RatingServiceImpl implements RatingService {
 	    	produktGraphRepository.save(p);
 		}
 		return p;
+	}
+	public RegionNode getOrCreateRegion(Long id, String region,String stadt){
+		RegionNode r = this.regionGraphRepo.findByDbid(id);
+		if (r==null){
+			r= new RegionNode(id, region,stadt);
+			this.regionGraphRepo.save(r);
+		}
+		return r;
 	}
 
 	@Override
