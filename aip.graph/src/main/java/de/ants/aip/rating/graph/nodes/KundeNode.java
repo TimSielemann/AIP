@@ -20,6 +20,8 @@ public class KundeNode extends BaseNode {
 	@RelatedToVia(type = AuftragsPositionRelation.RELATIONSHIP_TYPE, direction = Direction.OUTGOING)
     Set<AuftragsPositionRelation> bestellungen = new HashSet<>();
 	
+
+	
 	protected KundeNode(){}
 	
 	public KundeNode(Long id, String name, String stadt){

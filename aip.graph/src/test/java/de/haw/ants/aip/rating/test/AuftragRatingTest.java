@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 import de.ants.aip.rating.dto.SalesData;
 import de.ants.aip.rating.graph.nodes.AuftragsPositionRelation;
 import de.ants.aip.rating.graph.nodes.KundeNode;
+import de.ants.aip.rating.graph.nodes.ProduktNode;
 import de.ants.aip.rating.graph.repository.AuftragsPositionGraphRepository;
 import de.ants.aip.rating.graph.repository.KundeGraphRepository;
 import de.ants.aip.rating.services.RatingService;
@@ -68,6 +69,18 @@ public class AuftragRatingTest {
     	System.out.println(city+"--"+newData+"--"+newData.getProdukt()+":"+newData.getCount());
     	Assert.notNull(newData);
     	Assert.isTrue(oldData.getCount()+(count*2) == newData.getCount()); // each added two so we should have count*2 more
+    }
+    
+    @Test
+    public void testProductsBuyed() {
+    	String product = "Produkt 3";
+    	ProduktNode oldData = null;
+    	Iterable<? extends ProduktNode> produktData = ratingService.showProductBuyed(product);
+    	for(ProduktNode data: produktData) {
+    		System.out.println(data);
+    		oldData = data;
+		}
+    	Assert.notNull(oldData);
     }
 }
 

@@ -6,7 +6,7 @@ import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
 @RelationshipEntity(type = AuftragsPositionRelation.RELATIONSHIP_TYPE)
-public class ProdukteRegionenRelation {
+public class KundeRegionenRelation {
 	public static final String RELATIONSHIP_TYPE = "WOHNT_IN";
 	@GraphId
 	private Long id;
@@ -18,7 +18,7 @@ public class ProdukteRegionenRelation {
 	@EndNode
 	private RegionNode region;
 
-	public ProdukteRegionenRelation(RegionNode region, KundeNode kunde) {
+	public KundeRegionenRelation(RegionNode region, KundeNode kunde) {
 		this.region = region;
 		this.kunde = kunde;
 	}
@@ -38,4 +38,5 @@ public class ProdukteRegionenRelation {
 	public void setKunde(KundeNode kunde) {
 		this.kunde = kunde;
 	}
+
 }

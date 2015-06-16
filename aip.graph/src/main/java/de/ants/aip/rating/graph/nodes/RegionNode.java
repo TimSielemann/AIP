@@ -1,8 +1,13 @@
 package de.ants.aip.rating.graph.nodes;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.GraphProperty;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedToVia;
 import org.springframework.data.neo4j.fieldaccess.DynamicProperties;
 
 @NodeEntity
@@ -11,12 +16,12 @@ public class RegionNode extends BaseNode {
 	@GraphProperty
 	private String region;
 
-	@Indexed
-	private DynamicProperties stadtMap;
+	@RelatedToVia(type = KundeRegionenRelation.RELATIONSHIP_TYPE, direction = Direction.INCOMING)
+    Set<KundeRegionenRelation> kunden = new HashSet<>();
 
-	public RegionNode(Long id, String region, String stadt) {
+	public RegionNode(Long id, String region) {
 		super(id);
-		this.stadtMap.setProperty(stadt, 1);
+		this.region = region;
 	}
 
 	public String getRegion() {
@@ -26,12 +31,10 @@ public class RegionNode extends BaseNode {
 	public void setRegion(String region) {
 		this.region = region;
 	}
-
-	public void setStadt(String stadt) {
-		this.stadtMap.setProperty(stadt, 1);
-	}
-
-	public DynamicProperties getStadtMap() {
-		return stadtMap;
-	}
+	
+	public KundeRegionenRelation addKunde(KundeNode kunde) {
+		KundeRegionenRelation r = new KundeRegionenRelation(this, kunde);
+		this.kunden.add(r);
+		return r;
+	} 
 }

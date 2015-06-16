@@ -47,12 +47,14 @@ public class RatingServiceImpl implements RatingService {
 	public KundeNode getOrCreateKunde(Long id, String name, String stadt) {
 		KundeNode k = kundeGraphRepository.findByDbid(id);
 		if(k==null) {
-			k = new KundeNode(id, name, stadt);
-			kundeGraphRepository.save(k);
 			
-//			k = kundeGraphRepository.findOne(k.getId()); // check if it was saved
-//			if(k.getDbid()==null) throw new NullPointerException();
-//			if(k.getStadt()==null) throw new NullPointerException();
+			k = new KundeNode(id, name, stadt);
+			RegionNode region = this.regionGraphRepo.findBySchemaPropertyValue("region", stadt);
+			if (region == null){
+				region = new RegionNode(-1L, stadt);
+				this.regionGraphRepo.save(region);
+			}
+			kundeGraphRepository.save(k);
 		}
 		return k;
 	}
@@ -66,19 +68,24 @@ public class RatingServiceImpl implements RatingService {
 		}
 		return p;
 	}
-	public RegionNode getOrCreateRegion(Long id, String region,String stadt){
+	public RegionNode getOrCreateRegion(Long id, String region){
 		RegionNode r = this.regionGraphRepo.findByDbid(id);
 		if (r==null){
-			r= new RegionNode(id, region,stadt);
+			r= new RegionNode(id, region);
 			this.regionGraphRepo.save(r);
 		}
 		return r;
 	}
 
 	@Override
-	public void addBestellung(KundeNode k, ProduktNode produkt, int anzahl, RegionNode region) {
+	public void addBestellung(KundeNode k, ProduktNode produkt, int anzahl) {
 		AuftragsPositionRelation r = k.addBestellung(produkt, anzahl);
 		auftragsPositionGraphRepository.save(r);
 		//TODO ProdukteRegionenRelation prodRegRel = 
+	}
+
+	@Override
+	public Iterable<? extends ProduktNode> showProductBuyed(String string) {
+		return this.produktGraphRepository.showProductsBuyed(string);
 	}
 }

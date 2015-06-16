@@ -13,8 +13,10 @@ public interface RatingService {
 
 	ProduktNode getOrCreateProdukt(Long id, String name);
 	
-	RegionNode getOrCreateRegion(Long id, String region,String stadt);
+	RegionNode getOrCreateRegion(Long id, String region);
 
-	void addBestellung(KundeNode k, ProduktNode p, int i,RegionNode region);
+	void addBestellung(KundeNode k, ProduktNode p, int i);
+	
+	Iterable<? extends ProduktNode> showProductBuyed(String string);
 
 }
