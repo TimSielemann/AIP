@@ -30,6 +30,7 @@ public class KundenKomponententest {
     	Kunde kunde = new Kunde();
     	kunde.setNachname("Test");
     	kunde.setVorname("Tim");
+    	kunde.setStadt("Hamburg");
     	Kunde kundeCreated = kundenService.erstelleKunde(kunde);
     	Assert.notNull(kundeCreated);
     	Kunde getKunde = kundenService.getKunde(kundeCreated.getId());

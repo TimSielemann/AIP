@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-@ComponentScan(basePackages = "de.haw.ants.aip")
+@ComponentScan(basePackages = "de")
 public class AppConfiguration {
-	public static final String PKG_PREFIX = "de.haw.ants.aip";
+	public static final String PKG_PREFIX = "de";
 }

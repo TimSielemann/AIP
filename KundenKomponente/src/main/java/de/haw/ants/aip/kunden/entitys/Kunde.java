@@ -22,6 +22,19 @@ public class Kunde {
 
 	@Column(nullable = false)
 	private String nachname;
+	
+	@Column(nullable = false)
+	private String stadt;
+
+	public String getStadt() {
+		return stadt;
+	}
+
+
+	public void setStadt(String stadt) {
+		this.stadt = stadt;
+	}
+
 
 	// Getters and Setters
 	public Long getId() {

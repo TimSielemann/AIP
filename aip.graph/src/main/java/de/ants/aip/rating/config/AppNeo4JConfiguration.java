@@ -19,13 +19,13 @@ import de.haw.ants.aip.config.AppConfiguration;
 
 
 @Configuration
-@EnableNeo4jRepositories(basePackages = AppNeo4JConfiguration.BASE_PKG+".repository")
+@EnableNeo4jRepositories(basePackages = AppNeo4JConfiguration.BASE_PKG)
 public class AppNeo4JConfiguration extends Neo4jConfiguration {
 	
-	public static final String BASE_PKG = AppConfiguration.PKG_PREFIX+".rating.graph";
+	public static final String BASE_PKG = "de.ants.aip.rating";
 	
 	public AppNeo4JConfiguration() {
-		super.setBasePackage(BASE_PKG+".nodes");
+		super.setBasePackage(BASE_PKG);
 	}
 
 	@Bean(destroyMethod = "shutdown")
