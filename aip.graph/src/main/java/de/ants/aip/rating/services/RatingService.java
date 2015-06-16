@@ -12,6 +12,8 @@ public interface RatingService {
 	KundeNode getOrCreateKunde(Long id, String name, String stadt);
 
 	ProduktNode getOrCreateProdukt(Long id, String name);
+	
+	RegionNode getOrCreateRegion(Long id, String region,String stadt);
 
 	void addBestellung(KundeNode k, ProduktNode p, int i,RegionNode region);
 
