@@ -9,6 +9,7 @@ import de.ants.aip.rating.dto.SalesData;
 import de.ants.aip.rating.graph.nodes.AuftragsPositionRelation;
 import de.ants.aip.rating.graph.nodes.KundeNode;
 import de.ants.aip.rating.graph.nodes.ProduktNode;
+import de.ants.aip.rating.graph.nodes.ProdukteRegionenRelation;
 import de.ants.aip.rating.graph.nodes.RegionNode;
 import de.ants.aip.rating.graph.repository.AuftragsPositionGraphRepository;
 import de.ants.aip.rating.graph.repository.KundeGraphRepository;
@@ -75,8 +76,9 @@ public class RatingServiceImpl implements RatingService {
 	}
 
 	@Override
-	public void addBestellung(KundeNode k, ProduktNode produkt, int anzahl) {
+	public void addBestellung(KundeNode k, ProduktNode produkt, int anzahl, RegionNode region) {
 		AuftragsPositionRelation r = k.addBestellung(produkt, anzahl);
 		auftragsPositionGraphRepository.save(r);
+		//TODO ProdukteRegionenRelation prodRegRel = 
 	}
 }
