@@ -3,6 +3,7 @@ package de.ants.aip.rating.services;
 import de.ants.aip.rating.dto.SalesData;
 import de.ants.aip.rating.graph.nodes.KundeNode;
 import de.ants.aip.rating.graph.nodes.ProduktNode;
+import de.ants.aip.rating.graph.nodes.RegionNode;
 
 public interface RatingService {
 
@@ -12,6 +13,6 @@ public interface RatingService {
 
 	ProduktNode getOrCreateProdukt(Long id, String name);
 
-	void addBestellung(KundeNode k, ProduktNode p, int i);
+	void addBestellung(KundeNode k, ProduktNode p, int i,RegionNode region);
 
 }
