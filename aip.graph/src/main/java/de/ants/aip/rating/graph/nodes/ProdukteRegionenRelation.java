@@ -5,9 +5,9 @@ import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
-@RelationshipEntity(type = AuftragsPositionRelation.RELATIONSHIP_TYPE)
+@RelationshipEntity(type = ProdukteRegionenRelation.RELATIONSHIP_TYPE)
 public class ProdukteRegionenRelation {
-	public static final String RELATIONSHIP_TYPE = "WOHNT_IN";
+	public static final String RELATIONSHIP_TYPE = "GEKAUFT_IN";
 	@GraphId
 	private Long id;
 
